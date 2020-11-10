@@ -1,3 +1,5 @@
+
+  
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -19,7 +21,7 @@ struct Graph {
 };
 
 void bellmanford(struct Graph *graph, int source);
-void display(int arr[], int size, int parent[]);
+//void display(int arr[], int size, int parent[]);
 //void printpath(int parent[], int x);
 
 struct Graph* createGraph(int V, int E)
@@ -41,7 +43,7 @@ int path(int destination, int parent[], int source){
 	}
 	if(destination!=source){
 		printf("%d <-- ",destination);
-		return(path(parent[destination-1],parent,source));
+		return(path(parent[destination],parent,source));
 	}
 }
 
@@ -110,14 +112,12 @@ int path(int destination, int parent[], int source){
 
 /*void printpath(int parent[], int x)
   {
-
     if (parent[x]==0)
         return;
     printpath(parent, parent[x]);
  
     printf("%d ", x);
   }
-
   void display(int arr[], int size, int parent[]) 
   {
     int i;
@@ -151,3 +151,4 @@ int main()
     BellmanFord(graph,0); // 0 is the source node
     return 0;
 }
+
