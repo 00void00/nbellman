@@ -34,6 +34,18 @@ struct Graph* createGraph(int V, int E)
     return graph;
 }
 
+int path(int destination, int parent[], int source){
+	if(destination==source){
+	printf("%d <-- ",destination);
+	return 0;
+	}
+	if(destination!=source){
+		printf("%d <-- ",destination);
+		return(path(parent[destination-1],parent,source));
+	}
+}
+
+
  void BellmanFord(struct Graph* graph, int source)
  {
     int i,j,u,v,w;
@@ -93,16 +105,6 @@ struct Graph* createGraph(int V, int E)
       // printpath(parent, V);*/
  }
 
-int path(int destination, int parent[], int source){
-	if(destination==source){
-	printf("%d <-- ",destination);
-	return 0;
-	}
-	if(destination!=source){
-		printf("%d <-- ",destination);
-		return(path(parent[destination-1],parent,source));
-	}
-}
 
 
 
