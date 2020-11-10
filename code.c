@@ -43,10 +43,12 @@ struct Graph* createGraph(int V, int E)
     int parent[V];
 
   // Over Estimation
-    for (int i = 1; i <= V; i++) //initialise all dist to INT_MAX
+    for (int i = 1; i <= V; i++){//initialise all dist to INT_MAX
         dist[i]  = INF;
+      parent[i] = 0;
+    }
     dist[source] = 0;
-    parent[i] = 0;
+    
 
   // Relaxation
     for (i = 0; i <= V-1; i++)
@@ -77,12 +79,34 @@ struct Graph* createGraph(int V, int E)
           printf("Graph contains negative weight cycle");
         }
       }
-      printf("OUTPUT: ");
+     
+  int destination;
+	printf("\n Enter Destination vertex: ");
+	scanf("%d",&destination);
+	path(destination,parent,source);
+   
+   
+   
+   /* printf("OUTPUT: ");
       printf("\n Vertex\t  Distance\tPath");
       display(dist, V, parent);
-      // printpath(parent, V);
+      // printpath(parent, V);*/
  }
- void printpath(int parent[], int x)
+
+int path(int destination, int parent[], int source){
+	if(destination==source){
+	printf("%d <-- ",destination);
+	return 0;
+	}
+	if(destination!=source){
+		printf("%d <-- ",destination);
+		return(path(parent[destination-1],parent,source));
+	}
+}
+
+
+
+/*void printpath(int parent[], int x)
   {
 
     if (parent[x]==0)
@@ -101,7 +125,7 @@ struct Graph* createGraph(int V, int E)
       printpath(parent, i);
     }  
   printf("\n");
-  } 
+  }*/ 
 
 int main()
 {
